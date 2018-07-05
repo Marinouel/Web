@@ -1,0 +1,77 @@
+<?php include('server.php') ?>
+<html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<script type="text/javascript" src="webqr.js"></script>
+	<script type="text/javascript" src="grid.js"></script>
+	<script type="text/javascript" src="version.js"></script>
+	<script type="text/javascript" src="detector.js"></script>
+	<script type="text/javascript" src="formatinf.js"></script>
+	<script type="text/javascript" src="errorlevel.js"></script>
+	<script type="text/javascript" src="bitmat.js"></script>
+	<script type="text/javascript" src="datablock.js"></script>
+	<script type="text/javascript" src="bmparser.js"></script>
+	<script type="text/javascript" src="datamask.js"></script>
+	<script type="text/javascript" src="rsdecoder.js"></script>
+	<script type="text/javascript" src="gf256poly.js"></script>
+	<script type="text/javascript" src="gf256.js"></script>
+	<script type="text/javascript" src="decoder.js"></script>
+	<script type="text/javascript" src="qrcode.js"></script>
+	<script type="text/javascript" src="findpat.js"></script>
+	<script type="text/javascript" src="alignpat.js"></script>
+	<script type="text/javascript" src="databr.js"></script>
+
+</head>
+
+<body onload="load()">
+
+<php include('server.php') ?>
+
+<p>Read QR codes with JS</p>
+
+<canvas id="qr-canvas" width="640" height="480" style="display:none"></canvas>
+
+
+<form method="post" action="index.html">
+
+		<div id="result">Result here</div>
+
+		<div class="input-group">
+			<button type="submit" class="btn" name="q">Ready</button>
+		</div>
+</form>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript">
+	
+	function GetForms(){
+	var barcode = $("#result").val();
+	alert(barcode);
+    $.ajax({
+        type:   "GET",
+        dataType: "json",
+        url:        "server.php",
+        data:   {barcode: id},
+        error: function(xhr,status,error){alert(error);},
+        success:    function(data) {
+
+        	alert(JSON.stringify(data));
+            // $("#areatitle").html(data.title);
+        }
+        });
+   
+    }
+
+</script>
+
+
+
+<div id="outdiv">
+</div>
+
+</body>
+</html>
+
